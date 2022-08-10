@@ -1,0 +1,20 @@
+ame: Upload Website
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: jakejarvis/s3-sync-action@master
+      with:
+        command: cp
+        source: './public'
+        destination: s3://file.tf
+        aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws_region: us-west-2
