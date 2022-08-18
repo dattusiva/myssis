@@ -1,9 +1,9 @@
-ame: Upload Website
+name: Upload Website
 
 on:
   push:
     branches:
-    - master
+    - main
 
 jobs:
   deploy:
